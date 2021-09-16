@@ -122,7 +122,7 @@ async function onChange(e){
     notes.map(note =>(
 
 <Grid item  >
-<Card sx={{ display: 'flex' }} variant="outlined" style={{backgroundColor:'#517fa4',color:'#ffffff',width:'382px'}}>
+<Card sx={{ display: 'flex' }} variant="outlined" style={{backgroundColor:'#517fa4',color:'#ffffff',width:'382px',marginLeft:'10px'}}>
 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
   <CardContent style={{ color:'#ffffff'}}>
     <Typography component="div" variant="h5" style={{color:'#ffffff',width:'200px'}}>
