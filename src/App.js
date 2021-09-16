@@ -96,7 +96,7 @@ async function onChange(e){
       <p><i>{note.comment}</i></p>
       <p>
      {
-     note.image && <img src={note.image} style={{width:400}} />
+     note.image && <img src={note.image} alt="person" style={{width:400}} />
      }</p>
      <p>
           <button onClick={() => deleteNote(note)}>Delete note</button>
