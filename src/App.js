@@ -8,8 +8,13 @@ import {createTodo as createNoteMutation, deleteTodo as deleteNoteMutation} from
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-import Button from '@mui/material/Button';
 
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const initialFormState = {name:'', description:''}
 
@@ -66,11 +71,27 @@ async function onChange(e){
 }
   return (
     <div className="App">
-<div style={{width:'100%',textAlign:'right-end'}} >  <div style={{width:'200px',margin:'20px'}}> <AmplifySignOut  /></div></div>
+       <AppBar position="static" style={{ background: 'linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%)'}}>
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          My Notes App
+          </Typography>
+          <AmplifySignOut  />
+        </Toolbar>
+      </AppBar>
 
-      <h1 style={{color: '#ffffff',backgroundColor: '#babba',textShadow: '#616161 2px 1px 1px'}}>My Notes App</h1>
+
     
-<div style={{backgroundColor:'#ffffff',padding:'20px',margin:'20px'}}>
+<div style={{backgroundColor:'#ffffff',padding:'20px',margin:'20px',border:'1px dotted #314755'}}>
 <TextField id="filled-basic" style={{marginRight:'20px'}}  label="Name" variant="outlined"  value={formData.name} onChange={e => setFormData({...formData,'name': e.target.value})} />
 
 
@@ -87,12 +108,13 @@ async function onChange(e){
 <Button variant="contained" onClick={createNote} style={{marginTop:'10px'}}>Create Note</Button>
 </div>
 <div style={{marginBottom:30,alignSelf:'center'}}>
+  <h1>Family Members</h1>
   {
     notes.map(note =>(
-      <div key={note.id || note.name} style={{marginBottom:30,margin:'20px'}}>
-      <h2 style={{color: '#ffffff',backgroundColor: '#babba',textShadow: '#616161 2px 1px 2px'}}>{note.name}</h2>
+      <div key={note.id || note.name} style={{marginBottom:30,margin:'20px',float:'right'}} >
+      <h2>{note.name}</h2>
       <p>{note.description}</p>
-      <p><i>{note.comment}</i></p>
+      <p><i>{note.comment !== null ? note.comment : "No comments provided."}</i></p>
       <p >
      {
      note.image && <img src={note.image} alt="person" style={{width:400,padding:'20px',backgroundColor:'rgba(0,0,0,.10)',border:'1px dotted rgba(0,0,0,.30)'}} />
