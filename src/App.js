@@ -90,7 +90,7 @@ async function onChange(e){
 <div style={{marginBottom:30,alignSelf:'center'}}>
   {
     notes.map(note =>(
-      <div key={note.id || note.name} style={{marginBottom:30,borderBottom:'1px dotted #cccccc',margin:'20px'}}>
+      <div key={note.id || note.name} style={{marginBottom:30,margin:'20px'}}>
       <h2>{note.name}</h2>
       <p>{note.description}</p>
       <p><i>{note.comment}</i></p>
