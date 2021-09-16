@@ -122,7 +122,7 @@ async function onChange(e){
     notes.map(note =>(
 
 <Grid item xs={4} style={{width:'382px'}}>
-<Card sx={{ display: 'flex' }} variant="outlined" style={{backgroundColor:'rgba(0,0,0,.3)',color:'#ffffff',width:'381px'}}>
+<Card sx={{ display: 'flex' }} variant="outlined" style={{backgroundColor:'#517fa4',color:'#ffffff',width:'381px'}}>
 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
   <CardContent style={{width:'200px', color:'#ffffff'}}>
     <Typography component="div" variant="h5" style={{color:'#ffffff'}}>
@@ -130,7 +130,7 @@ async function onChange(e){
     </Typography>
     <Typography variant="subtitle1" color="text.secondary" component="div" style={{color:'#ffffff'}}>
    <p> {note.description}</p>
-   <p> <i>{note.comment !== null ? note.comment : "No comments provided."}</i></p>
+   <p> <i style={{fontSize:'14px'}}>{note.comment !== null ? note.comment : "No comments provided."}</i></p>
     </Typography>
   </CardContent>
   <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
