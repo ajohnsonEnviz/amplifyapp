@@ -115,17 +115,17 @@ async function onChange(e){
 <div style={{marginBottom:30}}>
   <h1>Family Members</h1>
 
-  <Grid container spacing={2} style={{alignSelf:'center',marginLeft:'10px'}}>
+  <Grid container spacing={2} style={{alignSelf:'center'}}>
 
  
   {
     notes.map(note =>(
 
 <Grid item  >
-<Card sx={{ display: 'flex' }} variant="outlined" style={{backgroundColor:'#517fa4',color:'#ffffff'}}>
+<Card sx={{ display: 'flex' }} variant="outlined" style={{backgroundColor:'#517fa4',color:'#ffffff',width:'382px'}}>
 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
   <CardContent style={{ color:'#ffffff'}}>
-    <Typography component="div" variant="h5" style={{color:'#ffffff'}}>
+    <Typography component="div" variant="h5" style={{color:'#ffffff',width:'200px'}}>
    <b> {note.name}</b>
     </Typography>
     <Typography variant="subtitle1" color="text.secondary" component="div" style={{color:'#ffffff'}}>
