@@ -5,6 +5,10 @@ import {API, Storage} from 'aws-amplify';
 import {withAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react'
 import {listTodos} from './graphql/queries';
 import {createTodo as createNoteMutation, deleteTodo as deleteNoteMutation} from './graphql/mutations';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
+import Button from '@mui/material/Button';
 
 
 const initialFormState = {name:'', description:''}
@@ -62,44 +66,41 @@ async function onChange(e){
 }
   return (
     <div className="App">
-<div style={{width:'100%',textAlign:'right-end'}} >  <div style={{width:'200px'}}> <AmplifySignOut  /></div></div>
+<div style={{width:'100%',textAlign:'right-end'}} >  <div style={{width:'200px',margin:'20px'}}> <AmplifySignOut  /></div></div>
 
-      <h1>My Notes App</h1>
-      <input onChange={e => setFormData({...formData,'name': e.target.value})}
-      placeholder="Note name"
-      value={formData.name}
-      style={{marginRight:'10px'}}
-      />
-<input onChange={e => setFormData({...formData,'description': e.target.value})}
-      placeholder="Note description"
-      value={formData.description}
-      style={{marginRight:'10px'}}
-      />
-      <input onChange={e => setFormData({...formData,'comment': e.target.value})}
-      placeholder="Note comments"
-      value={formData.comment}
-      style={{marginRight:'10px'}}
-      />
+      <h1 style={{color: '#ffffff',backgroundColor: '#babba',textShadow: '#616161 2px 1px 1px'}}>My Notes App</h1>
+    
+<div style={{backgroundColor:'#ffffff',padding:'20px',margin:'20px'}}>
+<TextField id="filled-basic" style={{marginRight:'20px'}}  label="Name" variant="outlined"  value={formData.name} onChange={e => setFormData({...formData,'name': e.target.value})} />
+
+
+<TextField id="filled-basic" style={{marginRight:'20px'}}  label="Description" variant="outlined"  value={formData.description} onChange={e => setFormData({...formData,'description': e.target.value})}/>
+
+
+<TextField id="filled-basic" style={{marginRight:'20px'}} label="Comments" variant="outlined"  value={formData.comment} onChange={e => setFormData({...formData,'comment': e.target.value})}/>
+
+
       <input type="file" onChange={onChange} />
       
-      
-<button onClick={createNote}>
-  Create Note
-</button>
 
+
+<Button variant="contained" onClick={createNote} style={{marginTop:'10px'}}>Create Note</Button>
+</div>
 <div style={{marginBottom:30,alignSelf:'center'}}>
   {
     notes.map(note =>(
       <div key={note.id || note.name} style={{marginBottom:30,margin:'20px'}}>
-      <h2>{note.name}</h2>
+      <h2 style={{color: '#ffffff',backgroundColor: '#babba',textShadow: '#616161 2px 1px 2px'}}>{note.name}</h2>
       <p>{note.description}</p>
       <p><i>{note.comment}</i></p>
-      <p>
+      <p >
      {
-     note.image && <img src={note.image} alt="person" style={{width:400}} />
+     note.image && <img src={note.image} alt="person" style={{width:400,padding:'20px',backgroundColor:'rgba(0,0,0,.10)',border:'1px dotted rgba(0,0,0,.30)'}} />
      }</p>
      <p>
-          <button onClick={() => deleteNote(note)}>Delete note</button>
+
+<Button variant="contained" color="error" onClick={() => deleteNote(note)} style={{marginTop:'10px'}}>Delete Note</Button>
+          
      </p>
   
       </div>
