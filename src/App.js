@@ -115,7 +115,7 @@ async function onChange(e){
 <div style={{marginBottom:30}}>
   <h1>Family Members</h1>
 
-  <Grid container spacing={3} style={{alignSelf:'center',padding:'20px',margin:'20px',}}>
+  <Grid container spacing={3} style={{alignSelf:'center',padding:'10px',margin:'10px',}}>
 
  
   {
