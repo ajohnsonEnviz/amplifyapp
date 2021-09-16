@@ -7,14 +7,19 @@ import {listTodos} from './graphql/queries';
 import {createTodo as createNoteMutation, deleteTodo as deleteNoteMutation} from './graphql/mutations';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-
-
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Grid from '@mui/material/Grid';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import {CardActions } from '@mui/material';
 
 const initialFormState = {name:'', description:''}
 
@@ -107,31 +112,49 @@ async function onChange(e){
 
 <Button variant="contained" onClick={createNote} style={{marginTop:'10px'}}>Create Note</Button>
 </div>
-<div style={{marginBottom:30,alignSelf:'center'}}>
+<div style={{marginBottom:30}}>
   <h1>Family Members</h1>
+
+  <Grid container spacing={3} style={{alignSelf:'center',marginLeft:'30px'}}>
+
+ 
   {
     notes.map(note =>(
-      <div key={note.id || note.name} style={{marginBottom:30,margin:'20px',float:'right'}} >
-      <h2>{note.name}</h2>
-      <p>{note.description}</p>
-      <p><i>{note.comment !== null ? note.comment : "No comments provided."}</i></p>
-      <p >
-     {
-     note.image && <img src={note.image} alt="person" style={{width:400,padding:'20px',backgroundColor:'rgba(0,0,0,.10)',border:'1px dotted rgba(0,0,0,.30)'}} />
-     }</p>
-     <p>
 
-<Button variant="contained" color="error" onClick={() => deleteNote(note)} style={{marginTop:'10px'}}>Delete Note</Button>
-          
-     </p>
-  
-      </div>
+<Grid item xs={4} style={{width:'382px'}}>
+<Card sx={{ display: 'flex' }} variant="outlined" style={{backgroundColor:'rgba(0,0,0,.3)',color:'#ffffff',width:'381px'}}>
+<Box sx={{ display: 'flex', flexDirection: 'column' }}>
+  <CardContent style={{width:'200px', color:'#ffffff'}}>
+    <Typography component="div" variant="h5" style={{color:'#ffffff'}}>
+   <b> {note.name}</b>
+    </Typography>
+    <Typography variant="subtitle1" color="text.secondary" component="div" style={{color:'#ffffff'}}>
+   <p> {note.description}</p>
+   <p> <i>{note.comment !== null ? note.comment : "No comments provided."}</i></p>
+    </Typography>
+  </CardContent>
+  <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+
+  <IconButton color="primary" aria-label="upload picture" component="span"  onClick={() => deleteNote(note)} style={{marginTop:'10px'}} >
+          <DeleteIcon color="error"  />
+        </IconButton>
+  </Box>
+</Box>
+<CardMedia
+  component="img"
+  sx={{ width: 151 }}
+  image={note.image}
+  alt="Live from space album cover"
+/>
+</Card>
+</Grid>
     ))
   }
-</div>
+ </Grid>
    
 
    
+    </div>
     </div>
   );
 }
